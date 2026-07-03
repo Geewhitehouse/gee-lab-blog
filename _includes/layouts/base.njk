@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between items-center p-6 md:p-12">
+
+    <!-- Brand Header & Matching Theme Toggle -->
+    <header class="w-full max-w-5xl flex justify-between items-center border-b border-[var(--card-border)] pb-6 mb-8">
+        <a href="/" class="text-xl font-black uppercase tracking-tight text-[var(--text-main)]">Geesite Blog</a>
+        <button id="themeToggle" class="flex items-center gap-3 px-4 py-2 rounded-full bg-[var(--card-bg)] border border-[var(--card-border)] backdrop-blur-md" aria-label="Toggle Light and Dark Theme">
+            <span class="text-xs font-bold tracking-wider uppercase text-[var(--text-muted)]">Vibe Mode</span>
+            <div class="w-12 h-6 bg-slate-300 dark:bg-slate-700 rounded-full p-0.5 relative transition-colors">
+                <div id="switchKnob" class="w-5 h-5 bg-white rounded-full transition-transform transform translate-x-0 dark:translate-x-6 flex items-center justify-center shadow-md">
+                    <span class="text-[10px] block dark:hidden">☀️</span>
+                    <span class="text-[10px] hidden dark:block">🌙</span>
+                </div>
+            </div>
+        </button>
+    </header>
+
+    <!-- Main Dynamic Content Feed Layout -->
+    <main class="flex-1 w-full max-w-4xl flex flex-col gap-8">
+        {{ content | safe }}
+    </main>
+
+    <!-- Unified Footer Component -->
+    <footer class="w-full max-w-5xl border-t border-[var(--card-border)] pt-6 mt-12 text-center">
+        <span class="text-xs font-bold tracking-[0.2em] uppercase text-[var(--text-muted)]">
+            © 2026 geesite.xyz
+        </span>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', targetTheme);
+            if(targetTheme === 'dark') {
+                document.getElementById('switchKnob').classList.add('translate-x-6');
+            } else {
+                document.getElementById('switchKnob').classList.remove('translate-x-6');
+            }
+        });
+    </script>
+</body>
+</html>

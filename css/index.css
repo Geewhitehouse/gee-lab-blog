@@ -1,0 +1,46 @@
+/* Import matching typography */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap');
+
+:root {
+    --bg-color: #d8e3e4;
+    --grid-color: rgba(74, 93, 110, 0.08);
+    --text-main: #3d4f5d;
+    --text-muted: #647a8c;
+    --accent-primary: #e0b463;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(255, 255, 255, 0.9);
+    --focus-ring: #3d4f5d;
+}
+
+[data-theme="dark"] {
+    --bg-color: #161d24;
+    --grid-color: rgba(255, 255, 255, 0.04);
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent-primary: #ca9f4a;
+    --card-bg: rgba(15, 23, 42, 0.95);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --focus-ring: #a78bfa;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: center;
+    color: var(--text-main);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+h1, h2, h3 {
+    font-family: 'Syne', sans-serif;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
