@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: Geewhitehouse/gee-lab-blog 
+  branch: main
+media_folder: "src/images"
+public_folder: "/images"
+collections:
+  - name: "prompts"
+    label: "Prompts"
+    folder: "src/prompts"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Role", name: "role", widget: "string"}
+      - {label: "Tone", name: "tone", widget: "select", options: ["Friendly", "Professional", "Casual"]}
+      - {label: "Task", name: "task", widget: "text"}
